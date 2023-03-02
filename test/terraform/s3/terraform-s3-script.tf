@@ -26,6 +26,11 @@ provider "aws" {
   region     = var.REGION
   access_key = var.ACCESS_KEY.ID
   secret_key = var.ACCESS_KEY.VALUE
+  default_tags {
+    tags = {
+      Humanitec = true
+    }
+  }
 }
 
 module "aws_s3" {
