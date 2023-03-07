@@ -58,3 +58,8 @@ output "aws_secret_access_key" {
   value     = var.ACCESS_KEY.VALUE
   sensitive = true
 }
+
+output "test" {
+  value     = var.test
+  sensitive = true
+}
