@@ -39,6 +39,8 @@ module "aws_s3" {
   bucket = var.BUCKET
   acl    = "private"
   force_destroy = true
+  control_object_ownership = true
+  object_ownership         = "BucketOwnerPreferred"
 }
 
 output "region" {
