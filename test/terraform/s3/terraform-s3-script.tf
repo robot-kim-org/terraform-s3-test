@@ -1,26 +1,27 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "~> 5.45, != 5.71.0"
     }
   }
 }
 
 variable "REGION" {
-    type = string
+  type = string
 }
 
 variable "BUCKET" {
-    type = string
+  type = string
 }
 
+
 variable "ACCESS_KEY" {
-    type = object({
-        ID    = string
-        VALUE = string
-    })
-    sensitive = true
+  type = object({
+    ID    = string
+    VALUE = string
+  })
+  sensitive = true
 }
 
 provider "aws" {
@@ -37,11 +38,12 @@ provider "aws" {
 module "aws_s3" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
-  bucket = var.BUCKET
-  acl    = "private"
-  force_destroy = true
+  bucket                   = var.BUCKET
+  acl                      = "private"
+  force_destroy            = true
   control_object_ownership = true
   object_ownership         = "BucketOwnerPreferred"
+  version                  = "4.11.0"
 }
 
 output "region" {
